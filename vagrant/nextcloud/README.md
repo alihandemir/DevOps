@@ -25,12 +25,23 @@ Nextcloud
 * Die Verbindung Web - Datenbank erfolgt mittels Internen Netzwerk Adapter.
 * Von Aussen ist nur der HTTP Port auf dem Web Server Erreichbar.
 
+### Erstellen und Starten der VM's
+
+    cd nextcloud
+    vagrant up
+
+Die Dateien werden lokal im Verzeichnis ./html/ abgelegt:
+
+    web.vm.synced_folder "./html", "/var/www/html"
+
+Das Nextcloud-Seite ist via [http://localhost:8080](http://localhost:8080) erreichbar.
+
+    web.vm.network "forwarded_port", guest:80, host:8080, auto_correct: true
+
 Um in die VM zu wechseln ist zusätzlich der in Vagrantfile definierte Name einzugeben.
 
 	vagrant ssh db
 	vagrant ssh web
-
-Das Nextcloud-Seite ist via [http://localhost:8080](http://localhost:8080) mit User/Password: admin/test erreichbar.
 
 ### Tests
 
