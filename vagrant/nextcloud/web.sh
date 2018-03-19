@@ -5,6 +5,14 @@ sudo apt update
 # Apache installieren
 sudo apt -y install apache2
 
+# Reverse Proxy
+sudo apt install libapache2-mod-proxy-html
+sudo apt install libxml2-dev
+sudo a2enmod proxy
+sudo a2enmod proxy_html
+sudo a2enmod proxy_http
+service apache2 restart
+
 # PHP-Erweiterungen installieren
 sudo apt -y install php-mbstring php php-zip php-xml php-common php-gd php-curl
 
