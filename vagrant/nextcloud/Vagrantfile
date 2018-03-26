@@ -6,8 +6,8 @@ Vagrant.configure("2") do |config|
     web.vm.network :private_network, ip: "172.20.10.15"
     web.vm.network "forwarded_port", guest:80, host:8080, auto_correct: true
     web.vm.synced_folder "./html", "/var/www/html"
-    config.vm.provision "file", source: "./apache2.conf", destination: "/etc/apache2/"
-    config.vm.provision "file", source: "./001-reverseproxy.conf", destination: "/etc/apache2/sites-available/"
+    web.vm.provision "file", source: "./apache2.conf", destination: "/etc/apache2/"
+    web.vm.provision "file", source: "./001-reverseproxy.conf", destination: "/etc/apache2/sites-available/"
 
     web.vm.provider :virtualbox do |vb|
       vb.memory = "2048"
