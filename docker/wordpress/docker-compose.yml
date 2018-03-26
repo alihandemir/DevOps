@@ -1,0 +1,24 @@
+# Datei docker-compose.yml
+version: '2'
+
+services:
+  db:
+    image: mariadb:latest
+    volumes:
+      - /var/containers/wordpress-test/mysql:/var/lib/mysql
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: test
+
+  wordpress:
+    depends_on:
+      - db
+    image: wordpress:latest
+    volumes:
+      - /var/containers/wordpress-test/web:/var/www/html
+    ports:
+      - "8080:80"
+    restart: always
+    environment:
+      WORDPRESS_DB_HOST: db:3306
+      WORDPRESS_DB_PASSWORD: test
