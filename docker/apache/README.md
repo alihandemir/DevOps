@@ -39,9 +39,8 @@ dieses Verzeichnisses wird durch die COPY-Anweisung im Dockerfile in das Verzeic
 **Image erstellen**
 
     docker build -t apache .
-    docker run --rm -d -p 8080:80 -v `pwd`/web:/var/www/html --name apache apache
     docker run -d -p 80:80 -p 443:443 --name apache apache
 
 **Testen**
 
-- http://185.178.192.48:8080 aufrufen.
+- http://185.178.192.48 aufrufen.
