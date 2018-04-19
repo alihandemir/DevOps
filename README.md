@@ -7,3 +7,4 @@
 
 * [Docker](docker/)
     * [Wordpress](docker/wordpress)
+    * [Apache](docker/apache)
